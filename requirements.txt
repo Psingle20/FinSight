@@ -4,3 +4,6 @@ chromadb
 ollama
 unstructured
 pypdf
+reportlab
+sentence-transformers
+pandas
