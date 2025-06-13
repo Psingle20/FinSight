@@ -53,14 +53,14 @@ def get_risk_assessment_tool():
     return Tool(
         name="generate_risk_assessment",
         func=risk_assessment,
-        description="Analyzes financial statements and returns a risk summary (e.g. liquidity, credit, market risk). Input should be the company name."
+        description="Analyzes financial PDFs for risk (liquidity, credit, market). Input: company name."
     )
 
 def get_anomaly_detection_tool():
     return Tool(
         name="detect_anomalies",
         func=anomaly_detection,
-        description="Analyzes uploaded .csv or .xlsx file to detect anomalies in financial data. Input should be the full file path."
+        description="Detects financial anomalies in PDF data. Input: company name."
     )
 
 
