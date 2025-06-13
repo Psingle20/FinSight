@@ -16,8 +16,8 @@
 #         retriever=retriever,
 #         return_source_documents=False
 #     )
-
-
+from app.tools.risk_assessment import risk_assessment
+from app.tools.anomaly_detection import anomaly_detection
 from langchain.chains import RetrievalQA
 from langchain_community.chat_models import ChatOllama
 from app.embeddings.embedding_manager import get_vectorstore
@@ -49,8 +49,28 @@ def get_report_tool():
         description="Generates a detailed financial report based on document provided and user query provide the company name the document belongs to as input."
     )
 
+def get_risk_assessment_tool():
+    return Tool(
+        name="generate_risk_assessment",
+        func=risk_assessment,
+        description="Analyzes financial PDFs for risk (liquidity, credit, market). Input: company name."
+    )
+
+def get_anomaly_detection_tool():
+    return Tool(
+        name="detect_anomalies",
+        func=anomaly_detection,
+        description="Detects financial anomalies in PDF data. Input: company name."
+    )
+
+
 def get_agent():
-    tools = [get_rag_tool(), get_report_tool()]
+    tools = [
+        get_rag_tool(),
+        get_report_tool(),
+        get_risk_assessment_tool(),
+        get_anomaly_detection_tool()
+    ]
     llm = ChatOllama(model="mistral")
 
     return initialize_agent(
