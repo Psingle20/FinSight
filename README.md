@@ -25,7 +25,7 @@
 |----------------|--------------------------------|
 | Language Model | [Ollama](https://ollama.ai/) – `mistral` |
 | Framework      | [LangChain](https://www.langchain.com/) |
-| Retrieval      | FAISS Vectorstore               |
+| Retrieval      | Chroma Vectorstore               |
 | Embedding Mgmt | Custom loader + embedding manager |
 | PDF Generation | `fpdf`                          |
 | Interface      | Python CLI + LangChain Agents   |
@@ -55,6 +55,8 @@ finsight/
 ├── output/
 │   └── report/               # Auto-generated PDF reports
 ├── main.py                   # CLI Entry point
+├── data/                      # add regulatory filings for analysis
+├── font/
 ├── requirements.txt
 └── README.md
 
